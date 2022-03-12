@@ -84,7 +84,7 @@ export default {
     redirect: {
       login: '/auth/login',
       logout: '/auth/login',
-      home: '/',
+      home: '/dashboard',
     },
 
     plugins: ['~/plugins/axios']

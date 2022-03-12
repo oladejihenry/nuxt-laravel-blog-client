@@ -113,6 +113,7 @@
 
 <script>
 export default {
+  middleware: 'auth',
   auth: 'guest',
 
   data:() => ({
@@ -132,7 +133,7 @@ export default {
           remember: this.remember
         }
       })
-      .then(() => this.$router.push ('/'))
+      .then(() => this.$router.push ('/dashboard'))
       .catch(error => {
         if(error.response.status !== 422) throw error
 

@@ -28,24 +28,26 @@
             <ul
               class="flex-col md:flex-row list-none items-center hidden md:flex"
             >
-              <a
+              <NuxtLink
                 class="text-blueGray-500 block"
-                href="#pablo"
-                onclick="openDropdown(event,'user-dropdown')"
+                to="#"
               >
-                <div class="items-center flex">
+                <div class="items-center flex" 
+                @click="showDropdown()">
                   <span
                     class="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full"
                     ><img
                       alt="..."
                       class="w-full rounded-full align-middle border-none shadow-lg"
-                      src=""
+                      src="https://monstajamss.com/wp-content/uploads/2022/03/team-1-800x800-1.jpeg"
                   /></span>
                 </div>
-              </a>
-              <div
-                class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
-                id="user-dropdown"
+              </NuxtLink>
+              <div class="bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48 block" 
+                id="user-dropdown" 
+                data-popper-placement="bottom-end" 
+                style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate(-56px, 64px);"
+                v-if="dropDown"
               >
                 <a
                   href="#pablo"
@@ -73,3 +75,19 @@
           </div>
         </nav>
 </template>
+
+<script>
+export default {
+  name: 'TopBar',
+  data(){
+    return {
+      dropDown: false
+    }
+  },
+  methods: {
+    showDropdown(){
+      this.dropDown = !this.dropDown
+    }
+  }
+}
+</script>

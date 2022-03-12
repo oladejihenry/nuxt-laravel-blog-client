@@ -27,6 +27,14 @@ export default {
     TopBar,
     CenterContent,
     FrontPage
+  },
+  methods: {
+    
   }
 }
 </script>
+
+<style scoped>
+@import '~/assets/css/all.min.css';
+@import '~/assets/css/tailwind.css';
+</style>
