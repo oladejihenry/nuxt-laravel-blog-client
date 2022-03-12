@@ -5,13 +5,21 @@
 <script>
 export default {
   methods: {
-    login(event){
+    login(){
+      // this.$auth.loginWith('laravelSanctum', {
+      //   data: {
+      //     email: 'heolad@hotmail.com',
+      //     password: 'love2020'
+      //   }
+      // })
       this.$auth.loginWith('cookie', {
         data: {
-          email: 'heolad@gmail.com',
+          email: 'heolad@hotmail.com',
           password: 'love2020'
         }
-      })
+      }).then(()=>
+        this.$router.push('/')
+      )
     }
   }
 }
