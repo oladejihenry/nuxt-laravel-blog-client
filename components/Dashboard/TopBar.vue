@@ -86,3 +86,7 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+@import '@/assets/css/all.min.css';
+</style>

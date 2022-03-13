@@ -163,13 +163,31 @@
               </li>
 
               <li class="items-center">
-                <a
-                  href="./tables.html"
-                  class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500"
-                >
-                  <i class="fas fa-table mr-2 text-sm text-blueGray-300"></i>
-                  Tables
-                </a>
+                <div @click="dropDown" type="button" class="click-drop text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">        
+                  <i class="fa fa-book mr-2 text-sm text-blueGray-300" aria-hidden="true"></i>
+                  Posts
+                  <i class="fa fa-caret-down mr-2 text-sm" aria-hidden="true"></i>   
+                </div>
+                <ul class="py-2 space-y-2" v-if="showDrop">
+                  <li class="items-center">
+                    <NuxtLink to="/posts" class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500">
+                      <i class="fa fa-tasks mr-2 text-sm" aria-hidden="true"></i>
+                      All Posts
+                    </NuxtLink>
+                  </li>
+                  <li>
+                    <NuxtLink to="/posts/create" class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500">
+                      <i class="fa fa-plus mr-2 text-sm" aria-hidden="true"></i>
+                      Create Post
+                    </NuxtLink>
+                  </li>
+                  <li>
+                    <a href="#" class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500">
+                      <i class="fa fa-trash mr-2 text-sm" aria-hidden="true"></i>
+                      Post Bin
+                    </a>
+                  </li>
+                </ul>
               </li>
 
               <li class="items-center">
@@ -373,3 +391,25 @@
         </div>
       </nav>
 </template>
+<script>
+export default {
+  name: 'LeftBar',
+  data(){
+    return{
+      showDrop: false,
+    }
+  },
+  methods:{
+    dropDown(){
+      this.showDrop = !this.showDrop;
+    }
+  }
+}
+</script>
+
+<style scoped>
+@import '@/assets/css/all.min.css';
+.click-drop{
+  cursor: pointer;
+}
+</style>
