@@ -21,12 +21,18 @@ import TopBar from '@/components/Dashboard/TopBar'
 import CenterContent from '@/components/Dashboard/CenterContent'
 import FrontPage from '@/components/Dashboard/FrontPage'
 export default {
-  name: 'IndexPage',
+  middleware: 'auth',
+  name: 'Dashboard',
   components:{
     LeftBar,
     TopBar,
     CenterContent,
     FrontPage
+  },
+  head(){
+    return{
+      title: 'Dashboard'
+    }
   },
   methods: {
     

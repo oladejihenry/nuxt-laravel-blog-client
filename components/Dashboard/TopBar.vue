@@ -8,7 +8,7 @@
             <a
               class="text-white text-sm uppercase hidden lg:inline-block font-semibold"
               href="./index.html"
-              >Dashboard</a
+              >Welcome, {{ $auth.user.username  }}</a
             >
             <form
               class="md:flex hidden flex-row flex-wrap items-center lg:ml-auto mr-3"
@@ -30,7 +30,7 @@
             >
               <NuxtLink
                 class="text-blueGray-500 block"
-                to="#"
+                to=""
               >
                 <div class="items-center flex" 
                 @click="showDropdown()">
@@ -49,27 +49,20 @@
                 style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate(-56px, 64px);"
                 v-if="dropDown"
               >
-                <a
-                  href="#pablo"
+                <NuxtLink to="settings"
                   class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                  >Action</a
-                ><a
-                  href="#pablo"
-                  class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                  >Another action</a
-                ><a
-                  href="#pablo"
-                  class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                  >Something else here</a
-                >
-                <div
-                  class="h-0 my-2 border border-solid border-blueGray-100"
-                ></div>
-                <a
-                  href="#pablo"
-                  class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                  >Seprated link</a
-                >
+                  >
+                  Settings
+                </NuxtLink>
+                <hr>
+                <template v-if="$auth.user">
+                  <a href=""
+                    class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+                    @click.prevent="logout"
+                    >
+                    Logout
+                  </a>
+                </template>
               </div>
             </ul>
           </div>
@@ -85,6 +78,9 @@ export default {
     }
   },
   methods: {
+    logout(){
+      this.$auth.logout()
+    },
     showDropdown(){
       this.dropDown = !this.dropDown
     }

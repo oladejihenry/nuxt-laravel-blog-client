@@ -143,13 +143,13 @@
 
             <ul class="md:flex-col md:min-w-full flex flex-col list-none">
               <li class="items-center">
-                <a
-                  href="./dashboard.html"
+                <NuxtLink
+                  to="/dashboard"
                   class="text-xs uppercase py-3 font-bold block text-pink-500 hover:text-pink-600"
                 >
                   <i class="fas fa-tv mr-2 text-sm opacity-75"></i>
                   Dashboard
-                </a>
+                </NuxtLink>
               </li>
 
               <li class="items-center">
