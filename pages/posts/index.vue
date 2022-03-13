@@ -188,8 +188,10 @@
 import LeftBar from '@/components/Dashboard/LeftBar'
 import TopBar from '@/components/Dashboard/TopBar'
 import Footer from '@/components/Dashboard/Footer'
+
 export default {
   name: 'IndexPage',
+  middleware: 'auth',
   components:{
     LeftBar,
     TopBar,
