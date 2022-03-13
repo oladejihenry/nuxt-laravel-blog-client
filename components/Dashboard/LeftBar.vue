@@ -153,13 +153,13 @@
               </li>
 
               <li class="items-center">
-                <a
-                  href="/settings"
+                <NuxtLink
+                  to="/settings"
                   class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500"
                 >
                   <i class="fas fa-tools mr-2 text-sm text-blueGray-300"></i>
                   Settings
-                </a>
+                </NuxtLink>
               </li>
 
               <li class="items-center">

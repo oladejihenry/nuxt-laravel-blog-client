@@ -17,6 +17,11 @@ export default {
   components:{
     LeftBar,
     TopBar
-  }
+  },
+  head(){
+    return{
+      title: 'Settings'
+    }
+  },
 }
 </script>

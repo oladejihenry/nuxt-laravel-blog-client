@@ -115,7 +115,7 @@
 export default {
   middleware: 'auth',
   auth: 'guest',
-
+  name: 'Login',
   data:() => ({
     errors: [],
     email: '',
@@ -139,6 +139,11 @@ export default {
 
         this.errors = Object.values(error.response.data.errors).flat()
       })
+    }
+  },
+  head(){
+    return{
+      title: 'Login'
     }
   }
 }

@@ -5,10 +5,9 @@
           <div
             class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4"
           >
-            <a
+            <h3
               class="text-white text-sm uppercase hidden lg:inline-block font-semibold"
-              href="./index.html"
-              >Welcome, {{ $auth.user.username  }}</a
+              >Welcome, {{ $auth.user.username  }}</h3
             >
             <form
               class="md:flex hidden flex-row flex-wrap items-center lg:ml-auto mr-3"
