@@ -47,130 +47,11 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
-                        >
-                          <img
-                            src="../../assets/img/bootstrap.jpg"
-                            class="h-12 w-12 bg-white rounded-full border"
-                            alt="..."
-                          />
-                          <span class="ml-3 font-bold text-blueGray-600">
-                            Argon Design System
-                          </span>
+                      <tr v-for="(post, i) in posts.data" :key="i">
+                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
+                          <span class="ml-3 font-bold text-blueGray-600">{{ post.title}}</span>
                         </th>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-                        >
-                          $2,500 USD
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-                        >
-                          <i class="fas fa-circle text-orange-500 mr-2"></i>
-                          pending
-                        </td>
-                      </tr>
-                      <tr>
-                        <th
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
-                        >
-                          <img
-                            src="../../assets/img/angular.jpg"
-                            class="h-12 w-12 bg-white rounded-full border"
-                            alt="..."
-                          />
-                          <span class="ml-3 font-bold text-blueGray-600">
-                            Angular Now UI Kit PRO
-                          </span>
-                        </th>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-                        >
-                          $1,800 USD
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-                        >
-                          <i class="fas fa-circle text-emerald-500 mr-2"></i>
-                          completed
-                        </td>
-                      </tr>
-                      <tr>
-                        <th
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
-                        >
-                          <img
-                            src="../../assets/img/sketch.jpg"
-                            class="h-12 w-12 bg-white rounded-full border"
-                            alt="..."
-                          />
-                          <span class="ml-3 font-bold text-blueGray-600">
-                            Black Dashboard Sketch
-                          </span>
-                        </th>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-                        >
-                          $3,150 USD
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-                        >
-                          <i class="fas fa-circle text-red-500 mr-2"></i>
-                          delayed
-                        </td>
-                      </tr>
-                      <tr>
-                        <th
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
-                        >
-                          <img
-                            src="../../assets/img/react.jpg"
-                            class="h-12 w-12 bg-white rounded-full border"
-                            alt="..."
-                          />
-                          <span class="ml-3 font-bold text-blueGray-600">
-                            React Material Dashboard
-                          </span>
-                        </th>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-                        >
-                          $4,400 USD
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-                        >
-                          <i class="fas fa-circle text-teal-500 mr-2"></i> on
-                          schedule
-                        </td>
-                      </tr>
-                      <tr>
-                        <th
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
-                        >
-                          <img
-                            src="../../assets/img/vue.jpg"
-                            class="h-12 w-12 bg-white rounded-full border"
-                            alt="..."
-                          />
-                          <span class="ml-3 font-bold text-blueGray-600">
-                            React Material Dashboard
-                          </span>
-                        </th>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-                        >
-                          $2,200 USD
-                        </td>
-                        <td
-                          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-                        >
-                          <i class="fas fa-circle text-emerald-500 mr-2"></i>
-                          completed
-                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{ post.excerpt}}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -196,6 +77,13 @@ export default {
     LeftBar,
     TopBar,
     Footer 
+  },
+  data: () => ({
+    posts: []
+  }),
+  async fetch(){
+    const response = await this.$axios.get('/api/posts')
+    this.posts = response.data
   },
   head(){
     return{

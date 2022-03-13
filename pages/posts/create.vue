@@ -18,6 +18,7 @@
                     </h6>
                   </div>
                 </div>
+                <PostError :errors="errors"></PostError>
                 <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
                   <form @submit.prevent="submitPost">
                     <h6
@@ -109,6 +110,7 @@
 import LeftBar from '@/components/Dashboard/LeftBar'
 import TopBar from '@/components/Dashboard/TopBar'
 import Footer from '@/components/Dashboard/Footer'
+import PostError from '@/components/PostError'
 
 export default {
   middleware: 'auth',
@@ -116,21 +118,27 @@ export default {
   components:{
     LeftBar,
     TopBar,
-    Footer 
+    Footer,
+    PostError
   },
   data:() =>({
+    errors: [],
     title: '',
     body: '',
     excerpt: ''
   }),
   methods: {
     submitPost(){
+      this.errors = []
       this.$axios.post('/api/post/store', {
         title: this.title,
         body: this.body,
-        excerpt: this.excerpt,
-        user_id: this.$auth.user.id,
-        slug: this.title.replace(/\s+/g, '-').toLowerCase()
+        excerpt: this.excerpt
+      }).then(()=> this.$router.push('/posts'))
+      .catch(error => {
+        if(error.response.status !== 422) throw error
+
+        this.errors = Object.values(error.response.data.errors).flat()
       })
     }
   },
