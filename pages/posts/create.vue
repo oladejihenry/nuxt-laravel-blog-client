@@ -128,9 +128,9 @@ export default {
     excerpt: ''
   }),
   methods: {
-    submitPost(){
+    async submitPost(){
       this.errors = []
-      this.$axios.post('/api/post/store', {
+      await this.$axios.post('/api/post/store', {
         title: this.title,
         body: this.body,
         excerpt: this.excerpt
@@ -140,6 +140,7 @@ export default {
 
         this.errors = Object.values(error.response.data.errors).flat()
       })
+
     }
   },
   head(){

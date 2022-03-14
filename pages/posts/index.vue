@@ -11,7 +11,7 @@
               <div
                 class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white"
               >
-                <div class="rounded-t mb-0 px-4 py-3 border-0">
+                <!-- <div class="rounded-t mb-0 px-4 py-3 border-0">
                   <div class="flex flex-wrap items-center">
                     <div
                       class="relative w-full px-4 max-w-full flex-grow flex-1"
@@ -20,6 +20,20 @@
                         All Posts
                       </h3>
                     </div>
+                  </div>
+                </div> -->
+                <div class="rounded-t bg-white mb-0 px-6 py-6">
+                  <div class="text-center flex justify-between">
+                    <h6 class="text-blueGray-700 text-xl font-bold">
+                      All Posts
+                    </h6>
+                    <NuxtLink
+                      to="/posts/create"
+                      class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                      type="button"
+                    >
+                      Create New Post
+                    </NuxtLink>
                   </div>
                 </div>
                 <div class="block w-full overflow-x-auto">
@@ -47,7 +61,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr v-for="(post, i) in posts.data" :key="i">
+                      <tr class="border-b" v-for="(post, i) in posts.data" :key="i">
                         <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                           <span class="ml-3 font-bold text-blueGray-600">{{ post.title}}</span>
                         </th>
