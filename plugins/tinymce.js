@@ -1,0 +1,23 @@
+import tinymce from "tinymce"
+import "tinymce/themes/silver"
+import "tinymce/plugins/table"
+import "tinymce/plugins/link"
+import "tinymce/plugins/image"
+import "tinymce/plugins/lists"
+import "tinymce/plugins/code"
+import "tinymce/plugins/fullscreen"
+import "tinymce/icons/default"
+import 'tinymce/models/dom'
+import "tinymce/skins/ui/oxide/skin.min.css"
+import "tinymce/skins/ui/oxide/content.min.css"
+import "tinymce/skins/content/default/content.css"
+import "tinymce/skins/ui/oxide/skin.min.css"
+import "tinymce/skins/ui/oxide/content.min.css"
+import "tinymce/skins/content/default/content.css"
+import "tinymce/skins/ui/oxide/skin.min.css"
+import "tinymce/skins/ui/oxide/content.min.css"
+import "tinymce/skins/content/default/content.css"
+import "tinymce/skins/ui/oxide/skin.min.css"
+import "tinymce/skins/ui/oxide/content.min.css"
+
+export default tinymce

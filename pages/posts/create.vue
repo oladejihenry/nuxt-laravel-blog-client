@@ -53,6 +53,7 @@
                           </label>
                           <textarea
                             v-model="body"
+                            id="main"
                             type="text"
                             class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                             rows="4"
@@ -84,9 +85,11 @@
                     </div>
                     <div class="rounded-t mb-0 px-6 py-6">
                       <div class="text-center flex justify-between">
-                        <h6 class="text-blueGray-700 text-xl font-bold">
-                        
-                        </h6>
+                        <button class="text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 font-bold bg-pink-500"
+                          @click="goBack"
+                        >
+                          Back
+                        </button>
                         <button
                           class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                           type="submit"
@@ -114,7 +117,7 @@ import PostError from '@/components/PostError'
 
 export default {
   middleware: 'auth',
-  name: 'IndexPage',
+  name: 'PostCreate',
   components:{
     LeftBar,
     TopBar,
@@ -141,6 +144,9 @@ export default {
         this.errors = Object.values(error.response.data.errors).flat()
       })
 
+    },
+    goBack(){
+      this.$router.push('/posts')
     }
   },
   head(){
@@ -148,5 +154,15 @@ export default {
       title: 'Create Post'
     }
   },
+  mounted(){
+    tinymce.init({
+      selector: 'textarea#main',
+      height: 500,
+      skin: false,
+      content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+      plugins: 'image code',
+      images_file_types: 'jpg,svg,webp'
+    })
+  }
 }
 </script>

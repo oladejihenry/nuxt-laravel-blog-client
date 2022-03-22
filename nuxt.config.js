@@ -13,7 +13,10 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
+    // scripts: [
+    //   { src: "https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js", referrerpolicy: true }
+    // ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -87,7 +90,14 @@ export default {
       home: '/dashboard',
     },
 
-    plugins: ['~/plugins/axios']
+    plugins: [
+      '~/plugins/axios',
+      {
+        src: "~/plugins/tinymce.js",
+        mode: "client",
+        // ssr: false
+      }
+    ]
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
