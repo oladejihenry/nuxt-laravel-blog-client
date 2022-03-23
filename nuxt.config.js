@@ -91,12 +91,7 @@ export default {
     },
 
     plugins: [
-      '~/plugins/axios',
-      {
-        src: "~/plugins/tinymce.js",
-        mode: "client",
-        // ssr: false
-      }
+      '~/plugins/axios'
     ]
   },
 

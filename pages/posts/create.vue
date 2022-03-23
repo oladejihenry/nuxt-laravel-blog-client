@@ -51,15 +51,23 @@
                           >
                             Body
                           </label>
-                          <textarea
+                          <editor
+                            api-key="0k0h7wkha4v0kqhmq83hhspkpj5ijabiacfscwrbeh2nkxf5"
                             v-model="body"
-                            id="main"
-                            type="text"
-                            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                            rows="4"
-                          >
-                              </textarea
-                          >
+                            :init="{
+                              height: 500,
+                              menubar: true,
+                              plugins: [
+                                'advlist autolink lists link image charmap print preview anchor',
+                                'searchreplace visualblocks code fullscreen',
+                                'insertdatetime media table paste code help wordcount'
+                              ],
+                              toolbar:
+                                'undo redo | formatselect | bold italic backcolor | \
+                                alignleft aligncenter alignright alignjustify | \
+                                bullist numlist outdent indent | removeformat | help'
+                            }"
+                          />
                         </div>
                       </div>
                     </div>
@@ -114,6 +122,7 @@ import LeftBar from '@/components/Dashboard/LeftBar'
 import TopBar from '@/components/Dashboard/TopBar'
 import Footer from '@/components/Dashboard/Footer'
 import PostError from '@/components/PostError'
+import Editor from '@tinymce/tinymce-vue'
 
 export default {
   middleware: 'auth',
@@ -122,7 +131,8 @@ export default {
     LeftBar,
     TopBar,
     Footer,
-    PostError
+    PostError,
+    'editor': Editor
   },
   data:() =>({
     errors: [],
@@ -154,15 +164,5 @@ export default {
       title: 'Create Post'
     }
   },
-  mounted(){
-    tinymce.init({
-      selector: 'textarea#main',
-      height: 500,
-      skin: false,
-      content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
-      plugins: 'image code',
-      images_file_types: 'jpg,svg,webp'
-    })
-  }
 }
 </script>

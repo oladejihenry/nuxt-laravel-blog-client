@@ -150,6 +150,8 @@ export default {
 </script>
 
 <style scoped>
-@import '~/assets/css/tailwind.css';
+body{
+  margin: 0 !important;
+}
 </style>
 
