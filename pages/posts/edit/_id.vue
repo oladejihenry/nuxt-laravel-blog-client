@@ -164,7 +164,7 @@ export default {
 
     },
     goBack(){
-      this.$router.push('/posts')
+      this.$router.go(-1)
     }
   },
   head(){

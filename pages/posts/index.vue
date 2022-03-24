@@ -61,13 +61,13 @@
                          <th
                           class="px-6 align-middle border border-solid py-3 text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                         >
-                          Edit
+                         
                         </th>
                          <th
                           class="px-6 align-middle border border-solid py-3 text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                         >
                         
-                          Bin
+                         
                         </th>
                       </tr>
                     </thead>
@@ -77,7 +77,7 @@
                           {{ post.title}}
                         </td>
                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4">{{ post.excerpt}}</td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4">Date</td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4">{{ post.updated_at }}</td>
                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4"><NuxtLink :to="'/posts/edit/'+ post.id">Edit</NuxtLink></td>
                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4"
                         >
@@ -89,8 +89,22 @@
                   </table>
                 </div>
               </div>
+              <div class="mt-4">
+               <Component 
+                  :is="link.url ? 'NuxtLink' : 'span'" 
+                  v-for="(link, i) in posts.links"
+                  :href="link.url"
+                  to="/"
+                  :key="i"
+                  v-html="link.label"
+                  class="px-1"
+                  :class="link.url ? '' : 'text-blueGray-500'"
+               />  
+              </div>
             </div>
+            
           </div>
+          
           <Footer />
         </div>
     </div>
