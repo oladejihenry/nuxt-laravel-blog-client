@@ -25,15 +25,8 @@
                 <div class="rounded-t bg-white mb-0 px-6 py-6">
                   <div class="text-center flex justify-between">
                     <h6 class="text-blueGray-700 text-xl font-bold">
-                      All Posts
+                      Deleted Posts
                     </h6>
-                    <NuxtLink
-                      to="/posts/create"
-                      class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                      type="button"
-                    >
-                      Create New Post
-                    </NuxtLink>
                   </div>
                 </div>
                 <div class="block w-full overflow-x-auto">
@@ -77,8 +70,8 @@
                           {{ post.title}}
                         </td>
                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4">{{ post.excerpt}}</td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4">{{ post.updated_at }}</td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4"><NuxtLink :to="'/posts/edit/'+ post.id">Edit</NuxtLink></td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4">{{ post.deleted_at }}</td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4 delete" @click="restorePost(post.id, i)">Restore</td>
                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4 delete"
                         @click="deletePost(post.id, i)"
                         >
@@ -118,7 +111,7 @@ import TopBar from '@/components/Dashboard/TopBar'
 import Footer from '@/components/Dashboard/Footer'
 
 export default {
-  name: 'IndexPage',
+  name: 'BinPage',
   middleware: 'auth',
   components:{
     LeftBar,
@@ -129,31 +122,30 @@ export default {
     posts: []
   }),
   async fetch(){
-    const response = await this.$axios.get('/api/posts')
+    const response = await this.$axios.get('api/post/bin')
     this.posts = response.data
   },
   methods: {
     deletePost(id, index){
-      this.$axios.delete('/api/post/delete/' + id)
+      this.$axios.delete('/api/post/forceDelete/' + id)
       .then(() => {
         if(id){
            this.posts.data.splice(index,1)
         }
       })
-      // .then(response => {
-      //     if(response.status === 200){
-      //       this.posts.data.splice(id, 1)
-      //       // const index = this.posts.indexOf(post => post.id === id)
-      //       // if(index !== -1){
-      //       //   this.posts.splice(index, 1)
-      //       // }
-      //     }
-      // })
+    },
+    restorePost(id, index){
+      this.$axios.put('/api/post/restore/' + id)
+      .then(() => {
+        if(id){
+           this.posts.data.splice(index,1)
+        }
+      })
     }
   },
   head(){
     return{
-      title: 'All Posts'
+      title: 'Deleted Posts'
     }
   },
 }

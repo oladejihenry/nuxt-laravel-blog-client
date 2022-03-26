@@ -47,19 +47,25 @@
                         <div class="relative w-full mb-3">
                           <div class="mt-2">
                             <span class="block uppercase text-blueGray-600 text-xs font-bold mb-2">Categories</span>
-                            <div v-for="(category, i) in categories" :key="i">
-                              <label class="inline-flex items-center" v-if="category.id != null">
-                                <input type="checkbox" class="form-checkbox" v-model="category.id" 
-                                  :value="category.id"
-                                >
-                                <span class="ml-2" v-html="category.name"></span>
-                              </label>
-                              <label class="inline-flex items-center" v-else>
-                                <input type="checkbox" class="form-checkbox" v-model="categories.id" 
-                                  :value="categories.id"
-                                >
-                                <span class="ml-2" v-html="categories.name"></span>
-                              </label>
+                            <div v-if="categories.length > 0">
+                              <div v-for="(category, i) in categories" :key="i">
+                                <label class="inline-flex items-center">
+                                  <input type="checkbox" class="form-checkbox" v-model="category.id" 
+                                    :value="category.id"
+                                  >
+                                  <span class="ml-2" v-html="category.name"></span>
+                                </label>
+                              </div>
+                            </div>
+                            <div v-else>
+                              <div v-for="(mainCategory, i) in mainCategories" :key="i">
+                                <label class="inline-flex items-center">
+                                  <input type="checkbox" class="form-checkbox" v-model="mainCategory.i" 
+                                    :value="mainCategory.id"
+                                  >
+                                  <span class="ml-2" v-html="mainCategory.name"></span>
+                                </label>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -163,6 +169,7 @@ export default {
     body: '',
     excerpt: '',
     categories: [],
+    mainCategories: [],
   }),
   async fetch(){
     await this.$axios.get('/api/post/'+this.$route.params.id)
@@ -171,6 +178,7 @@ export default {
       this.body = response.data.post.body
       this.excerpt = response.data.post.excerpt
       this.categories = response.data.categories
+      this.mainCategories = response.data.mainCategories
     })
   },
   methods: {
@@ -180,7 +188,8 @@ export default {
         title: this.title,
         body: this.body,
         excerpt: this.excerpt,
-        categories: this.categories
+        categories: this.categories,
+        mainCategories: this.categories
       }).then(()=> this.$router.push('/posts'))
       .catch(error => {
         if(error.response.status !== 422) throw error

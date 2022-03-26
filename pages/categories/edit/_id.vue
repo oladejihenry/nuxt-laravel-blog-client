@@ -154,7 +154,6 @@ export default {
           content: 'Update Post'
         }
       ]
-      // description =  this.description
     }
   },
 }

@@ -153,7 +153,7 @@
               </li>
 
               <li class="items-center">
-                <div @click="dropDown" type="button" class="text-xs uppercase py-3 font-bold block text-pink-500 hover:text-pink-600" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">        
+                <div @click="dropDown" type="button" class="click-drop text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">        
                   <i class="fa fa-book mr-2 text-sm text-blueGray-300" aria-hidden="true"></i>
                   Posts
                   <i class="fa fa-caret-down mr-2 text-sm opacity-75" aria-hidden="true"></i>   
@@ -172,10 +172,10 @@
                     </NuxtLink>
                   </li>
                   <li>
-                    <a href="#" class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500">
+                    <NuxtLink to="/posts/bin" class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500">
                       <i class="fa fa-trash mr-2 text-sm" aria-hidden="true"></i>
                       Post Bin
-                    </a>
+                    </NuxtLink>
                   </li>
                 </ul>
               </li>
