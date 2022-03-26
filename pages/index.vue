@@ -40,7 +40,7 @@
 									<div class="details">
 										<ul class="meta list-inline mb-3">
 											<li class="list-inline-item text-uppercase"><a href="#"><img src="images/other/author-sm.png" class="author text-uppercase" alt="author"/>{{ front.username }}</a></li>
-											<li class="list-inline-item"><a href="#">Trending</a></li>
+											<li class="list-inline-item text-uppercase"><a href="#">{{ front.category }}</a></li>
 											<li class="list-inline-item">{{ front.created_at }}</li>
 										</ul>
 										<h5 class="post-title"><NuxtLink :to="'' + front.slug">{{ front.title }}</NuxtLink></h5>

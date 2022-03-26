@@ -47,7 +47,7 @@
                         <div class="relative w-full mb-3">
                           <div class="mt-2">
                             <span class="block uppercase text-blueGray-600 text-xs font-bold mb-2">Categories</span>
-                            <div v-if="categories.length > 0">
+                            <div v-if="categories ? categories.length : 0">
                               <div v-for="(category, i) in categories" :key="i">
                                 <label class="inline-flex items-center">
                                   <input type="checkbox" class="form-checkbox" v-model="category.id" 
@@ -60,7 +60,7 @@
                             <div v-else>
                               <div v-for="(mainCategory, i) in mainCategories" :key="i">
                                 <label class="inline-flex items-center">
-                                  <input type="checkbox" class="form-checkbox" v-model="mainCategory.i" 
+                                  <input type="checkbox" class="form-checkbox" v-model="catSelected" 
                                     :value="mainCategory.id"
                                   >
                                   <span class="ml-2" v-html="mainCategory.name"></span>
@@ -170,6 +170,7 @@ export default {
     excerpt: '',
     categories: [],
     mainCategories: [],
+    catSelected: [],
   }),
   async fetch(){
     await this.$axios.get('/api/post/'+this.$route.params.id)
@@ -188,8 +189,8 @@ export default {
         title: this.title,
         body: this.body,
         excerpt: this.excerpt,
-        categories: this.categories,
-        mainCategories: this.categories
+        categories: this.categories.id,
+        mainCategories: this.catSelected
       }).then(()=> this.$router.push('/posts'))
       .catch(error => {
         if(error.response.status !== 422) throw error
