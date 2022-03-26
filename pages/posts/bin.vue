@@ -64,8 +64,9 @@
                         </th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr class="border-b" v-for="(post, i) in posts.data" :key="i">
+                    <tbody v-if="posts.data ? posts.data.length : 0">
+                      
+                      <tr class="border-b" v-for="(post, i) in posts.data" :key="i" >
                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4 text-left flex items-center">
                           {{ post.title}}
                         </td>
@@ -77,6 +78,13 @@
                         >
                         <i class="fa fa-trash mr-2 text-sm" aria-hidden="true"></i>
                         
+                        </td>
+                      </tr>
+                    </tbody>
+                    <tbody v-else>
+                      <tr >
+                        <td colspan="5" class="text-center uppercase">
+                          <b>No deleted posts</b> 
                         </td>
                       </tr>
                     </tbody>
