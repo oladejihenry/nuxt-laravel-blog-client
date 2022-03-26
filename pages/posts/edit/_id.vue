@@ -45,6 +45,29 @@
                     <div class="flex flex-wrap mb-5">
                       <div class="w-full lg:w-12/12 px-4">
                         <div class="relative w-full mb-3">
+                          <div class="mt-2">
+                            <span class="block uppercase text-blueGray-600 text-xs font-bold mb-2">Categories</span>
+                            <div v-for="(category, i) in categories" :key="i">
+                              <label class="inline-flex items-center" v-if="category.id != null">
+                                <input type="checkbox" class="form-checkbox" v-model="category.id" 
+                                  :value="category.id"
+                                >
+                                <span class="ml-2" v-html="category.name"></span>
+                              </label>
+                              <label class="inline-flex items-center" v-else>
+                                <input type="checkbox" class="form-checkbox" v-model="categories.id" 
+                                  :value="categories.id"
+                                >
+                                <span class="ml-2" v-html="categories.name"></span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-wrap mb-5">
+                      <div class="w-full lg:w-12/12 px-4">
+                        <div class="relative w-full mb-3">
                           <label
                             class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                             htmlFor="grid-password"
@@ -93,11 +116,11 @@
                     </div>
                     <div class="rounded-t mb-0 px-6 py-6">
                       <div class="text-center flex justify-between">
-                        <button class="text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 font-bold bg-pink-500"
-                          @click="goBack"
+                        <NuxtLink class="text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 font-bold bg-pink-500"
+                          to="/posts"
                         >
                           Back
-                        </button>
+                        </NuxtLink>
                         <button
                           class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                           type="submit"
@@ -138,14 +161,16 @@ export default {
     errors: [],
     title: '',
     body: '',
-    excerpt: ''
+    excerpt: '',
+    categories: [],
   }),
   async fetch(){
     await this.$axios.get('/api/post/'+this.$route.params.id)
     .then(response => {
-      this.title = response.data.title
-      this.body = response.data.body
-      this.excerpt = response.data.excerpt
+      this.title = response.data.post.title
+      this.body = response.data.post.body
+      this.excerpt = response.data.post.excerpt
+      this.categories = response.data.categories
     })
   },
   methods: {
@@ -154,7 +179,8 @@ export default {
       await this.$axios.put('/api/post/update/'+this.$route.params.id , {
         title: this.title,
         body: this.body,
-        excerpt: this.excerpt
+        excerpt: this.excerpt,
+        categories: this.categories
       }).then(()=> this.$router.push('/posts'))
       .catch(error => {
         if(error.response.status !== 422) throw error
@@ -162,6 +188,9 @@ export default {
         this.errors = Object.values(error.response.data.errors).flat()
       })
 
+    },
+    async updateCategories(){
+        console.log(this.categories)
     },
     goBack(){
       this.$router.go(-1)
