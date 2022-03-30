@@ -9,15 +9,8 @@
 				<div class="collapse navbar-collapse">
 					<!-- menus -->
 					<ul class="navbar-nav mr-auto">
-						<li class="nav-item dropdown active">
-							<a class="nav-link dropdown-toggle" href="index.html">Home</a>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="index.html">Magazine</a></li>
-								<li><a class="dropdown-item" href="personal.html">Personal</a></li>
-								<li><a class="dropdown-item" href="personal-alt.html">Personal Alt</a></li>
-								<li><a class="dropdown-item" href="minimal.html">Minimal</a></li>
-								<li><a class="dropdown-item" href="classic.html">Classic</a></li>
-							</ul>
+						<li class="nav-item active">
+							<NuxtLink class="nav-link" to="/">Home</NuxtLink>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="category.html">Lifestyle</a>

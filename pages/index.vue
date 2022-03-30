@@ -31,11 +31,11 @@
 										<span class="post-format-sm">
 											<i class="icon-picture"></i>
 										</span>
-										<a href="blog-single.html">
+										<NuxtLink :to="'' + front.slug">
 											<div class="inner">
 												<img src="https://monstajamss.com/wp-content/uploads/2022/03/coi-leray-375x195.jpg" alt="post-title" />
 											</div>
-										</a>
+										</NuxtLink>
 									</div>
 									<div class="details">
 										<ul class="meta list-inline mb-3">
@@ -166,4 +166,7 @@ export default {
 @import '~/assets/front/css/slick.css';
 @import '~/assets/front/css/simple-line-icons.css';
 @import '~/assets/front/css/style.css';
+.spacer{
+  height: 50px;
+}
 </style>

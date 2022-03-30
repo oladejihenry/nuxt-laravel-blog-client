@@ -98,16 +98,17 @@
                 </div>
               </div>
               <div class="mt-4">
-               <Component 
+               <!-- <Component 
                   :is="link.url ? 'NuxtLink' : 'span'" 
                   v-for="(link, i) in posts.links"
-                  :href="link.url"
+                  :href="'localhost:3000?page='+link.page"
                   to="/"
                   :key="i"
                   v-html="link.label"
                   class="px-1"
                   :class="link.url ? '' : 'text-blueGray-500'"
-               />  
+               />  -->
+               <!-- <button @click="fetch">Click</button> -->
               </div>
             </div>
             
@@ -130,14 +131,29 @@ export default {
   components:{
     LeftBar,
     TopBar,
-    Footer 
+    Footer
   },
   data: () => ({
-    posts: []
+    posts: [],
+    lastPage: 1,
+    nextUrl: '',
+    currentPage: 1
   }),
   async fetch(){
-    const response = await this.$axios.get('/api/posts')
-    this.posts = response.data
+    let url = '/api/posts'
+    if(this.nextUrl !== '' && this.nextUrl !== null){
+      url = this.nextUrl
+    }
+    // const response = await this.$axios.get('/api/posts?page='+this.$route.query.page)
+    const response = await this.$axios.get(url)
+      if (this.posts.length > 0){
+        this.posts = [...this.posts, ...response.data.data]
+      }else{
+        this.posts = response.data
+      }
+    this.nextUrl = response.data.next_page_url
+    this.lastPage = response.data.lastPage
+    this.currentPage = response.data.current_page
   },
   methods: {
     deletePost(id, index){

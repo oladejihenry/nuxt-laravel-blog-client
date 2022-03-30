@@ -230,6 +230,15 @@
                   Settings
                 </NuxtLink>
               </li>
+              <li class="items-center">
+                <NuxtLink
+                  to="/"
+                  class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500"
+                >
+                  <i class="fas fa-doutone fa-arrow-left mr-2 text-sm text-blueGray-300"></i>
+                  Back To Website
+                </NuxtLink>
+              </li>
 
             </ul>
           </div>
