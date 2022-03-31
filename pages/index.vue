@@ -142,11 +142,11 @@ export default {
     Footer,
   },
   data: () => ({
-    frontpage: []
+    frontpage: [],
   }),
   async fetch() {
     const response = await this.$axios.get('/api/frontpage')
-    this.frontpage = response.data
+    this.frontpage = response.data.posts
   },
   head(){
     return{

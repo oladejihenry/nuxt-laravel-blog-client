@@ -12,30 +12,19 @@
 						<li class="nav-item active">
 							<NuxtLink class="nav-link" to="/">Home</NuxtLink>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="category.html">Lifestyle</a>
+						<li class="nav-item" v-for="(cat, i) in category" :key="i.name">
+							<NuxtLink class="nav-link" :to="'/category/' + cat.slug">{{ cat.name }}</NuxtLink>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="category.html">Inspiration</a>
+						<li class="nav-item" >
+							<NuxtLink class="nav-link" to="/category/music">Music</NuxtLink>
 						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#">Pages</a>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="category.html">Category</a></li>
-								<li><a class="dropdown-item" href="blog-single.html">Blog Single</a></li>
-								<li><a class="dropdown-item" href="blog-single-alt.html">Blog Single Alt</a></li>
-								<li><a class="dropdown-item" href="about.html">About</a></li>
-								<li><a class="dropdown-item" href="contact.html">Contact</a></li>
-							</ul>
+						<li class="nav-item" >
+							<NuxtLink class="nav-link" to="/category/video">Video</NuxtLink>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="contact.html">Contact</a>
-						</li>
-            <template>
-              <li class="nav-item" v-if="$auth.user">
-							  <NuxtLink class="nav-link" to="/dashboard">Admin</NuxtLink>
+            <template v-if="$auth.user">
+              <li class="nav-item">
+							  <a class="nav-link" href="/dashboard">Admin</a>
 						  </li>
-              
             </template>
 					</ul>
 				</div>
@@ -65,6 +54,15 @@
 		</nav>
 	</header>
 </template>
+<script>
+export default {
+	name: 'Header',
+	data: () => ({
+    category:[]
+  }),
+	
+}
+</script>
 
 <style scoped>
 @import '~/assets/front/css/bootstrap.min.css';
