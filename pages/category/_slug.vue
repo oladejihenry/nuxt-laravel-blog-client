@@ -11,65 +11,27 @@
 				<div class="col-lg-8">
 
           <div class="row gy-4">
-              <div class="col-sm-6">
+              <div class="col-sm-6" v-for="(post, i) in posts.data" :key="i">
                   <!-- post -->
                   <div class="post post-grid rounded bordered">
                       <div class="thumb top-rounded">
-                          <a href="category.html" class="category-badge position-absolute">Lifestyle</a>
+                          <a href="category.html" class="category-badge position-absolute">{{singleCat.name}}</a>
                           <span class="post-format">
                               <i class="icon-picture"></i>
                           </span>
-                          <a href="blog-single.html">
+                          <NuxtLink :to="'../'+ post.slug">
                               <div class="inner">
-                                  <img src="images/posts/post-md-1.jpg" alt="post-title" />
+                                  <img :src='featuredImage+ post.featured_image' :alt="post.title" />
                               </div>
-                          </a>
+                          </NuxtLink>
                       </div>
                       <div class="details">
                           <ul class="meta list-inline mb-0">
-                              <li class="list-inline-item"><a href="#"><img src="images/other/author-sm.png" class="author" alt="author"/>Katen Doe</a></li>
-                              <li class="list-inline-item">29 March 2021</li>
+                              <li class="list-inline-item text-uppercase"><a href="#"><img src="images/other/author-sm.png" class="author" alt="author"/>{{ post.username }}</a></li>
+                              <li class="list-inline-item">{{ post.created_at }}</li>
                           </ul>
-                          <h5 class="post-title mb-3 mt-3"><a href="blog-single.html">How To Become Better With Building In 1 Month</a></h5>
-                          <p class="excerpt mb-0">I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence.</p>
-                      </div>
-                      <div class="post-bottom clearfix d-flex align-items-center">
-                          <div class="social-share me-auto">
-                              <button class="toggle-button icon-share"></button>
-                              <ul class="icons list-unstyled list-inline mb-0">
-                                  <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                  <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                  <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                  <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                                  <li class="list-inline-item"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
-                                  <li class="list-inline-item"><a href="#"><i class="far fa-envelope"></i></a></li>
-                              </ul>
-                          </div>
-                          <div class="more-button float-end">
-                              <a href="blog-single.html"><span class="icon-options"></span></a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-
-              <div class="col-sm-6">
-                  <!-- post -->
-                  <div class="post post-grid rounded bordered">
-                      <div class="thumb top-rounded">
-                          <a href="category.html" class="category-badge position-absolute">Inspiration</a>
-                          <a href="blog-single.html">
-                              <div class="inner">
-                                  <img src="images/posts/post-md-2.jpg" alt="post-title" />
-                              </div>
-                          </a>
-                      </div>
-                      <div class="details">
-                          <ul class="meta list-inline mb-0">
-                              <li class="list-inline-item"><a href="#"><img src="images/other/author-sm.png" class="author" alt="author"/>Katen Doe</a></li>
-                              <li class="list-inline-item">29 March 2021</li>
-                          </ul>
-                          <h5 class="post-title mb-3 mt-3"><a href="blog-single.html">Most Important Thing You Need To Know About Swim</a></h5>
-                          <p class="excerpt mb-0">I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence.</p>
+                          <h5 class="post-title mb-3 mt-3"><NuxtLink :to="'../' + post.slug">{{ post.title }}</NuxtLink></h5>
+                          <p class="excerpt mb-0">{{ post.excerpt }}</p>
                       </div>
                       <div class="post-bottom clearfix d-flex align-items-center">
                           <div class="social-share me-auto">
@@ -127,22 +89,29 @@ export default {
     AuthorCard,
   },
   data: () => ({
-    post:[]
+    posts:[],
+    categories: {},
+    singleCat: {}
   }),
-  // async fetch(){
-  //   await this.$axios.get('/api/frontpage/'+this.$route.params.slug)
-  //  .then(response => {
-  //    this.post = response.data
-  //  })
-  //   .catch(error => {
-  //     ({
-  //       message: 'Error',
-  //       statusCode: 404,
-  //       status: 404,
-  //       statusText: 'Not Found',
-  //     })
-  //   })
-  // },
+  async fetch(){
+      const response = await this.$axios.get('/api/frontpage/category/'+this.$route.params.slug)
+        this.posts = response.data.posts
+        this.categories = response.data.cat
+        this.singleCat = response.data.category
+  },
+  head(){
+      return{
+          title: this.singleCat.name
+      }
+  },
+  computed: {
+	featuredImage(){
+	  return this.$config.myPublicVariable + 'storage/'
+	},
+    mainURL(){
+      return this.$config.myLink
+    },
+  }
 }
 </script>
 

@@ -9,7 +9,7 @@
 				<div class="collapse navbar-collapse">
 					<!-- menus -->
 					<ul class="navbar-nav mr-auto">
-						<li class="nav-item active">
+						<li class="nav-item ">
 							<NuxtLink class="nav-link" to="/">Home</NuxtLink>
 						</li>
 						<li class="nav-item" v-for="(cat, i) in category" :key="i.name">
@@ -21,11 +21,14 @@
 						<li class="nav-item" >
 							<NuxtLink class="nav-link" to="/category/video">Video</NuxtLink>
 						</li>
-            <template v-if="$auth.user">
-              <li class="nav-item">
-							  <a class="nav-link" href="/dashboard">Admin</a>
-						  </li>
-            </template>
+						<li class="nav-item" >
+							<NuxtLink class="nav-link" to="/category/news">News</NuxtLink>
+						</li>
+						<template v-if="$auth.user">
+							<li class="nav-item">
+								<a class="nav-link" href="/dashboard">Admin</a>
+							</li>
+						</template>
 					</ul>
 				</div>
 
@@ -70,4 +73,16 @@ export default {
 @import '~/assets/front/css/slick.css';
 @import '~/assets/front/css/simple-line-icons.css';
 @import '~/assets/front/css/style.css';
+/* .navbar-nav li.active .nav-link[data-v-383d0eae] {
+    color: #FFF;
+    border-radius: 25px;
+    background: #FE4F70;
+    background: linear-gradient(to right, #FE4F70 0%, #FFA387 100%);
+} */
+a.nuxt-link-exact-active {
+  	color: #FFF !important;
+   	border-radius: 25px;
+    /* background: #FE4F70; */
+    background: linear-gradient(to right, #FE4F70 0%, #FFA387 100%);
+}
 </style>

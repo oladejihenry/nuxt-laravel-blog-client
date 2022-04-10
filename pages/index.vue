@@ -33,14 +33,14 @@
 										</span>
 										<NuxtLink :to="'' + front.slug">
 											<div class="inner">
-												<img src="https://monstajamss.com/wp-content/uploads/2022/03/coi-leray-375x195.jpg" alt="post-title" />
+												<img :src='featuredImage+ front.featured_image' :alt="front.title" />
 											</div>
 										</NuxtLink>
 									</div>
 									<div class="details">
 										<ul class="meta list-inline mb-3">
 											<li class="list-inline-item text-uppercase"><a href="#"><img src="images/other/author-sm.png" class="author text-uppercase" alt="author"/>{{ front.username }}</a></li>
-											<li class="list-inline-item text-uppercase"><a href="#">{{ front.category }}</a></li>
+											<li class="list-inline-item text-uppercase"><NuxtLink :to="'/category/'+ front.category_slug ">{{ front.category }}</NuxtLink></li>
 											<li class="list-inline-item">{{ front.created_at }}</li>
 										</ul>
 										<h5 class="post-title"><NuxtLink :to="'' + front.slug">{{ front.title }}</NuxtLink></h5>
@@ -143,19 +143,31 @@ export default {
   },
   data: () => ({
     frontpage: [],
+	// featuredImage: '',
+	// baseUrl: process.env.BASE_URL
   }),
-  async fetch() {
-    const response = await this.$axios.get('/api/frontpage')
-    this.frontpage = response.data.posts
+//   mounted: function (){
+// 	this.baseUrl = process.env.BASE_URL
+//   },
+  async asyncData({ $axios }) {
+    const response = await $axios.get('/api/frontpage')
+    return { frontpage: response.data.posts }
   },
   head(){
     return{
       title: 'Blog'
     }
   },
-  methods: {
-    
+  computed: {
+	featuredImage(){
+	  return this.$config.myPublicVariable + 'storage/'
+	}
   }
+	//   featuredImage: `${process.env.BASE_URL}` + 'storage/',
+	
+	//   return this.baseUrl + 'storage/'
+	// },
+  
 }
 </script>
 

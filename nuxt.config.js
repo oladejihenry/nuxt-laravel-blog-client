@@ -105,5 +105,14 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+  },
+
+  publicRuntimeConfig: {
+    myPublicVariable: process.env.PUBLIC_API_URL,
+    myLink: process.env.MAIN_URL,
+  },
+
+  // env:{
+  //   baseUrl: process.env.BASE_URL || 'http://localhost/'
+  // },
 }

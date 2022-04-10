@@ -42,7 +42,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="flex flex-wrap mb-5">
+                    <!-- <div class="flex flex-wrap mb-5">
                       <div class="w-full lg:w-12/12 px-4">
                         <div class="relative w-full mb-3">
                           <div class="mt-2">
@@ -70,7 +70,7 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                     <div class="flex flex-wrap mb-5">
                       <div class="w-full lg:w-12/12 px-4">
                         <div class="relative w-full mb-3">

@@ -118,6 +118,9 @@
                           <input 
                             type="file"
                             class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                            name="featured_image"
+                            accept="image/*"
+                            @change="uploadFeaturedImage"
                           >
                         </div>
                       </div>
@@ -202,6 +205,7 @@ export default {
     title: '',
     body: '',
     excerpt: '',
+    featured_image: '',
     categories: [],
     catSelected: []
   }),
@@ -210,13 +214,23 @@ export default {
     this.categories = response.data
   },
   methods: {
+    uploadFeaturedImage(e){
+      let file = e.target.files[0]
+      let reader = new FileReader()
+      reader.onloadend = () => {
+        this.featured_image = reader.result
+      }
+    reader.readAsDataURL(file)
+      
+  },
     async submitPost(){
       this.errors = []
       await this.$axios.$post('/api/post/store', {
         title: this.title,
         body: this.body,
         excerpt: this.excerpt,
-        catSelected: this.catSelected
+        catSelected: this.catSelected,
+        featured_image: this.featured_image 
       }).then(()=> this.$router.push('/posts'))
       .catch(error => {
         if(error.response.status !== 422) throw error

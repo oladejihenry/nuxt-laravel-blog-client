@@ -24,13 +24,13 @@
                 <h1 class="title mt-0 mb-3">{{ post.title }}</h1>
                 <ul class="meta list-inline mb-0">
                   <li class="list-inline-item text-uppercase"><a href="#"><img src="images/other/author-sm.png" class="author" alt="author"/>{{ post.username }}</a></li>
-                  <li class="list-inline-item"><a href="#">{{ post.category }}</a></li>
+                  <li class="list-inline-item"><NuxtLink :to="'/category/'+post.category_slug">{{ post.category }}</NuxtLink></li>
                   <li class="list-inline-item">{{ post.created_at }}</li>
                 </ul>
               </div>
               <!-- featured image -->
               <div class="featured-image">
-                <img src="https://monstajamss.com/wp-content/uploads/2022/03/coi-leray-e1648678359583.jpg" alt="post-title" />
+                <img :src='featuredImage+ post.featured_image' :alt="post.title" />
               </div>
               <!-- post content -->
               <div class="post-content clearfix" v-html="post.body">
@@ -193,7 +193,7 @@ export default {
     AuthorCard,
   },
   data: () => ({
-    post:[]
+    post:[],
   }),
   async fetch(){
     await this.$axios.get('/api/frontpage/'+this.$route.params.slug)
@@ -214,6 +214,11 @@ export default {
       title: this.post.title
     }
   },
+  computed: {
+    featuredImage(){
+      return this.$config.myPublicVariable + 'storage/'
+    }
+  }
 }
 </script>
 
