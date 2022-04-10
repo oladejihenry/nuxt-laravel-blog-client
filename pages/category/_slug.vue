@@ -27,7 +27,7 @@
                       </div>
                       <div class="details">
                           <ul class="meta list-inline mb-0">
-                              <li class="list-inline-item text-uppercase"><a href="#"><img src="images/other/author-sm.png" class="author" alt="author"/>{{ post.username }}</a></li>
+                              <li class="list-inline-item text-capitalize"><a href="#"><img src="images/other/author-sm.png" class="author" alt="author"/>{{ post.username }}</a></li>
                               <li class="list-inline-item">{{ post.created_at }}</li>
                           </ul>
                           <h5 class="post-title mb-3 mt-3"><NuxtLink :to="'../' + post.slug">{{ post.title }}</NuxtLink></h5>

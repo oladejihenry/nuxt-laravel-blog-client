@@ -23,7 +23,7 @@
               <div class="post-header">
                 <h1 class="title mt-0 mb-3">{{ post.title }}</h1>
                 <ul class="meta list-inline mb-0">
-                  <li class="list-inline-item text-uppercase"><a href="#"><img src="images/other/author-sm.png" class="author" alt="author"/>{{ post.username }}</a></li>
+                  <li class="list-inline-item text-capitalize"><a href="#"><img src="images/other/author-sm.png" class="author" alt="author"/>{{ post.username }}</a></li>
                   <li class="list-inline-item"><NuxtLink :to="'/category/'+post.category_slug">{{ post.category }}</NuxtLink></li>
                   <li class="list-inline-item">{{ post.created_at }}</li>
                 </ul>
