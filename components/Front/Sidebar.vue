@@ -2,9 +2,9 @@
   <div class="col-lg-4">
 
       <!-- sidebar -->
-      <div class="sidebar">
+      <div class="sidebar" style="padding-top:76px;">
         <!-- widget about -->
-        <div class="widget rounded">
+        <!-- <div class="widget rounded">
           <div class="widget-about data-bg-image text-center" data-bg-image="images/map-bg.png">
             <img src="images/logo.svg" alt="logo" class="mb-4" />
             <p class="mb-4">Hello, We’re content writer who is fascinated by content fashion, celebrity and lifestyle. We helps clients bring the right content to the right people.</p>
@@ -17,7 +17,7 @@
               <li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
             </ul>
           </div>
-        </div>
+        </div> -->
 
         <!-- widget popular posts -->
         <div class="widget rounded">
