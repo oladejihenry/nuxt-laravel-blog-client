@@ -14,11 +14,11 @@
               href="https://www.creative-tim.com?ref=njs-settings"
               class="text-blueGray-500 hover:text-blueGray-700 text-sm font-semibold py-1"
             >
-              Creative Tim
+              Henry.O
             </a>
           </div>
         </div>
-        <div class="w-full md:w-8/12 px-4">
+        <!-- <div class="w-full md:w-8/12 px-4">
           <ul
             class="flex flex-wrap list-none md:justify-end justify-center"
           >
@@ -55,7 +55,7 @@
               </a>
             </li>
           </ul>
-        </div>
+        </div> -->
       </div>
     </div>
   </footer>

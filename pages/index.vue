@@ -13,11 +13,10 @@
 			<div class="row gy-4">
 
 				<div class="col-lg-8">
-
+					
 					<!-- section header -->
 					<div class="section-header">
-						<h3 class="section-title">Latest Posts</h3>
-						<img src="images/wave.svg" class="wave" alt="wave" />
+						<h3 class="section-title text-uppercase">Latest Posts</h3>
 					</div>
 
 					<div class="padding-30 rounded bordered">
@@ -28,19 +27,19 @@
 								<!-- post -->
 								<div class="post post-list clearfix">
 									<div class="thumb rounded">
-										<span class="post-format-sm">
+										<!-- <span class="post-format-sm">
 											<i class="icon-picture"></i>
-										</span>
+										</span> -->
 										<NuxtLink :to="'' + front.slug">
-											<div class="inner">
+											<div class="inner" style="width:265px; height:200px;">
 												<img :src='featuredImage+ front.featured_image' :alt="front.title" />
 											</div>
 										</NuxtLink>
 									</div>
 									<div class="details">
 										<ul class="meta list-inline mb-3">
-											<li class="list-inline-item text-uppercase"><a href="#"><img src="images/other/author-sm.png" class="author text-uppercase" alt="author"/>{{ front.username }}</a></li>
-											<li class="list-inline-item text-uppercase"><NuxtLink :to="'/category/'+ front.category_slug ">{{ front.category }}</NuxtLink></li>
+											<li class="list-inline-item text-capitalize"><a href="#"><img src="images/other/author-sm.png" class="author text-uppercase" alt="author"/>{{ front.username }}</a></li>
+											<li class="list-inline-item"><NuxtLink :to="'/category/'+ front.category_slug ">{{ front.category }}</NuxtLink></li>
 											<li class="list-inline-item">{{ front.created_at }}</li>
 										</ul>
 										<h5 class="post-title"><NuxtLink :to="'' + front.slug">{{ front.title }}</NuxtLink></h5>
@@ -180,5 +179,15 @@ export default {
 @import '~/assets/front/css/style.css';
 .spacer{
   height: 50px;
+}
+.section-header{
+	padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+   	border-radius: 10px;
+    border: solid 1px #EBEBEB;
+}
+.section-title{
+	text-align: center;
 }
 </style>

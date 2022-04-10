@@ -2,7 +2,7 @@
   <div class="col-lg-4">
 
       <!-- sidebar -->
-      <div class="sidebar" style="padding-top:76px;">
+      <div class="sidebar">
         <!-- widget about -->
         <!-- <div class="widget rounded">
           <div class="widget-about data-bg-image text-center" data-bg-image="images/map-bg.png">

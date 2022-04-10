@@ -16,9 +16,9 @@
                   <div class="post post-grid rounded bordered">
                       <div class="thumb top-rounded">
                           <a href="category.html" class="category-badge position-absolute">{{singleCat.name}}</a>
-                          <span class="post-format">
+                          <!-- <span class="post-format">
                               <i class="icon-picture"></i>
-                          </span>
+                          </span> -->
                           <NuxtLink :to="'../'+ post.slug">
                               <div class="inner">
                                   <img :src='featuredImage+ post.featured_image' :alt="post.title" />
