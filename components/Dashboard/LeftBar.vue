@@ -222,13 +222,40 @@
             >
 
               <li class="items-center">
-                <NuxtLink
-                  to="/settings"
-                  class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500"
-                >
-                  <i class="fas fa-tools mr-2 text-sm text-blueGray-300"></i>
-                  Settings
-                </NuxtLink>
+                <div @click="dropUsers" type="button" class="click-drop text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">        
+                  <i class="fa fa-users mr-2 text-sm text-blueGray-300" aria-hidden="true"></i>
+                  Users
+                  <i class="fa fa-caret-down mr-2 text-sm" aria-hidden="true"></i>   
+                </div>
+                <ul class="py-2 space-y-2" v-if="showDrop3">
+                  <li>
+                    <NuxtLink
+                      to="/users"
+                      class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500"
+                    >
+                      <i class="fas fa-users mr-2 text-sm text-blueGray-300"></i>
+                      All Users
+                    </NuxtLink>
+                  </li>
+                  <li>
+                    <NuxtLink
+                      to="/users/create"
+                      class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500"
+                    >
+                      <i class="fas fa-user-plus mr-2 text-sm text-blueGray-300"></i>
+                      Create New User
+                    </NuxtLink>
+                  </li>
+                  <li>
+                    <NuxtLink
+                      to="/users/bin"
+                      class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500"
+                    >
+                      <i class="fas fa-trash mr-2 text-sm text-blueGray-300"></i>
+                      Users Bin
+                    </NuxtLink>
+                  </li>
+                </ul>
               </li>
               <li class="items-center">
                 <NuxtLink
@@ -252,6 +279,7 @@ export default {
     return{
       showDrop: false,
       showDrop2: false,
+      showDrop3: false,
     }
   },
   methods:{
@@ -260,6 +288,9 @@ export default {
     },
     dropCat(){
       this.showDrop2 = !this.showDrop2;
+    },
+    dropUsers(){
+      this.showDrop3 = !this.showDrop3;
     }
   }
 }

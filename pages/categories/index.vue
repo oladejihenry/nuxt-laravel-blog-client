@@ -86,7 +86,7 @@
                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4" v-else>-</td>
                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4">{{ category.updated_at }}</td>
                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4"><NuxtLink :to="'/categories/edit/'+ category.id">Edit</NuxtLink></td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4"
+                        <td class="delete border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4"
                         >
                         <i class="fa fa-trash mr-2 text-sm" aria-hidden="true"></i>
                         
@@ -148,4 +148,7 @@ export default {
 
 <style scoped>
 @import '@/assets/css/all.min.css';
+.delete{
+  cursor: pointer;
+}
 </style>

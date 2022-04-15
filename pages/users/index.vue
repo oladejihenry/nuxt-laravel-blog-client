@@ -22,13 +22,13 @@
                     </div>
                   </div>
                 </div> -->
-                <!-- <div class="rounded-t bg-white mb-0 px-6 py-6">
+                <div class="rounded-t bg-white mb-0 px-6 py-6">
                   <div class="text-center flex justify-between">
                     <h6 class="text-blueGray-700 text-xl font-bold">
                       All Users
                     </h6>
                     <NuxtLink
-                      to="/categories/create"
+                      to="/users/create"
                       class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                       type="button"
                     >
@@ -38,16 +38,16 @@
                 </div>
                 <div class="block w-full overflow-x-auto">
                   <!-- Projects table -->
-                  <!-- <table
+                  <table
                     class="items-center w-full bg-transparent border-collapse"
                   >
                     <thead>
                       <tr>
-                        <th
+                        <!-- <th
                           class="px-6 align-middle border border-solid py-3 text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                         >
                           Id
-                        </th>
+                        </th> -->
                         <th
                           class="px-6 align-middle border border-solid py-3 text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                         >
@@ -57,6 +57,11 @@
                           class="px-6 align-middle border border-solid py-3 text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                         >
                           Username
+                        </th>
+                         <th
+                          class="px-6 align-middle border border-solid py-3 text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                        >
+                          Email
                         </th>
                         <th
                           class="px-6 align-middle border border-solid py-3 text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"
@@ -78,14 +83,15 @@
                     </thead>
                     <tbody>
                       <tr class="border-b" v-for="(user, i) in users.data" :key="i">
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4 text-left flex items-center">{{ user.listId }}</td>
+                        <!-- <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4 text-left flex items-center">{{ user.id }}</td> -->
                         <td class="up border-t-0 capitalize px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4">
                           {{ user.name}}
                         </td>
                         <td class="up border-t-0 capitalize px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4" v-if="user.username != null" v-html="user.username"></td>
                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4" v-else>-</td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4" v-html="user.email"></td>
                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4">{{ user.updated_at }}</td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4"><NuxtLink :to="'/settings/edit/'+ user.id">Edit</NuxtLink></td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4"><NuxtLink :to="'/users/edit/'+ user.id">Edit</NuxtLink></td>
                         <td class="delete border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4"
                         >
                         <i class="fa fa-trash mr-2 text-sm" aria-hidden="true"></i>
@@ -93,7 +99,7 @@
                         </td>
                       </tr>
                     </tbody>
-                  </table> -->
+                  </table>
                 </div>
               </div>
               <!-- <div class="mt-4">
@@ -136,7 +142,7 @@ export default {
   },
   head(){
     return{
-      title: 'Settings'
+      title: 'All Users - Dashboard'
     }
   },
 }

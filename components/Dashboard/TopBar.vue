@@ -38,7 +38,7 @@
                     ><img
                       alt="..."
                       class="w-full rounded-full align-middle border-none shadow-lg"
-                      src="https://monstajamss.com/wp-content/uploads/2022/03/team-1-800x800-1.jpeg"
+                      :src='featuredImage+ $auth.user.profile_image'
                   /></span>
                 </div>
               </NuxtLink>
@@ -74,6 +74,11 @@ export default {
   data(){
     return {
       dropDown: false
+    }
+  },
+  computed: {
+    featuredImage(){
+      return this.$config.myPublicVariable + 'storage/'
     }
   },
   methods: {

@@ -30,7 +30,7 @@
               </div>
               <!-- featured image -->
               <div class="featured-image">
-                <img :src='featuredImage+ post.featured_image' :alt="post.title" />
+                <img :src='featuredImage+ post.main_image' :alt="post.title" />
               </div>
               <!-- post content -->
               <div class="post-content clearfix" v-html="post.body">
@@ -64,7 +64,7 @@
 
             <div class="spacer" data-height="50"></div>
 
-            <AuthorCard />
+            <AuthorCard :author="post" />
 
             <div class="spacer" data-height="50"></div>
 
@@ -186,6 +186,7 @@ import Footer from '@/components/Front/Footer'
 import AuthorCard from '@/components/Front/AuthorCard'
 export default {
   name:'SiglePost',
+  // props:['author'],
   components:{
     Header,
     Sidebar,
@@ -194,11 +195,13 @@ export default {
   },
   data: () => ({
     post:[],
+    // author:[],
   }),
   async fetch(){
     await this.$axios.get('/api/frontpage/'+this.$route.params.slug)
    .then(response => {
      this.post = response.data
+    //  this.author = response.data
    })
     .catch(error => {
       ({

@@ -31,14 +31,14 @@
 											<i class="icon-picture"></i>
 										</span> -->
 										<NuxtLink :to="'' + front.slug">
-											<div class="inner" style="width:265px; height:200px;">
+											<div class="inner">
 												<img :src='featuredImage+ front.featured_image' :alt="front.title" />
 											</div>
 										</NuxtLink>
 									</div>
 									<div class="details">
 										<ul class="meta list-inline mb-3">
-											<li class="list-inline-item text-capitalize"><a href="#"><img src="images/other/author-sm.png" class="author text-uppercase" alt="author"/>{{ front.username }}</a></li>
+											<li class="list-inline-item text-capitalize"><a href="#">{{ front.username }}</a></li>
 											<li class="list-inline-item"><NuxtLink :to="'/category/'+ front.category_slug ">{{ front.category }}</NuxtLink></li>
 											<li class="list-inline-item">{{ front.created_at }}</li>
 										</ul>
@@ -189,5 +189,8 @@ export default {
 }
 .section-title{
 	text-align: center;
+}
+.author{
+	border-radius: 9999px;
 }
 </style>
