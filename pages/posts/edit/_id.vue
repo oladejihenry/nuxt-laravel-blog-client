@@ -19,7 +19,8 @@
                   </div>
                 </div>
                 <PostError :errors="errors"></PostError>
-                <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+                <SlugError :slugerrors="slugerrors"></SlugError>
+                <div v-if="slugerrors" class="flex-auto px-4 lg:px-10 py-10 pt-0">
                   <form @submit.prevent="updatePost">
                     <h6
                       class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase"
@@ -137,6 +138,7 @@
                     </div>
                   </form>
                 </div>
+                <div v-else></div>
               </div>
             </div>
           </div>
@@ -151,6 +153,7 @@ import LeftBar from '@/components/Dashboard/LeftBar'
 import TopBar from '@/components/Dashboard/TopBar'
 import Footer from '@/components/Dashboard/Footer'
 import PostError from '@/components/PostError'
+import SlugError from '@/components/SlugError'
 import Editor from '@tinymce/tinymce-vue'
 
 export default {
@@ -161,10 +164,12 @@ export default {
     TopBar,
     Footer,
     PostError,
+    SlugError,
     'editor': Editor
   },
   data:() =>({
     errors: [],
+    slugerrors: [],
     title: '',
     body: '',
     excerpt: '',
@@ -181,6 +186,13 @@ export default {
       this.categories = response.data.categories
       this.mainCategories = response.data.mainCategories
     })
+    .catch(error => {
+      if(error.response.status == 403){
+        this.$router.push('/posts') 
+      }
+      this.slugerrors = error.response.data.message
+      // console.log(this.slugerrors)
+    })
   },
   methods: {
     async updatePost(){
@@ -194,8 +206,12 @@ export default {
       }).then(()=> this.$router.push('/posts'))
       .catch(error => {
         if(error.response.status !== 422) throw error
+        if(error.response.status == 403) {
+          this.$router.push('/posts')
+        }
 
         this.errors = Object.values(error.response.data.errors).flat()
+        this.slugerrors = error.response.data.message
       })
 
     },

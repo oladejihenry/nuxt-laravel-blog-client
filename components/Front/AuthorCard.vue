@@ -1,7 +1,7 @@
 <template>
   <div class="about-author padding-30 rounded">
     <div class="thumb author">
-      <img :src='featuredImage+ author.profile_image' alt="Katen Doe" />
+      <img :src='featuredImage+ author.profile_image' :alt="author.username" />
     </div>
     <div class="details">
       <h4 class="name text-capitalize"><a href="#">{{ author.username }}</a></h4>
