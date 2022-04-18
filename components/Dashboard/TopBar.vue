@@ -78,7 +78,7 @@ export default {
   },
   computed: {
     featuredImage(){
-      return this.$config.myPublicVariable + 'storage/'
+      return this.$config.myPublicVariable + 'storage/img/profile/'
     }
   },
   methods: {
