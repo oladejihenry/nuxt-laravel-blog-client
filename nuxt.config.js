@@ -67,7 +67,7 @@ export default {
             url: '/sanctum/csrf-cookie'
           },
           login: {
-            url: '/login',
+            url: '/api/login',
           },
           register: {
             url: '/api/register',
