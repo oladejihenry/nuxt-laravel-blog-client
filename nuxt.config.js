@@ -96,48 +96,62 @@ export default {
   //   ]
   // },
 
+  // auth: {
+  //   strategies: {
+  //     cookie: {
+  //       endpoints: {
+  //         csrf: {
+  //           url: '/sanctum/csrf-cookie'
+  //         },
+  //         login: {
+  //           url: '/login',
+  //         },
+  //         register: {
+  //           url: '/register',
+  //         },
+  //         logout: {
+  //           url: '/logout',
+  //         },
+  //         user: {
+  //           url: '/user',
+  //         }
+  //       },
+  //       user: {
+  //         property: 'data'
+  //       },
+  //     }
+  //   },
+
+  //   redirect: {
+  //     login: '/auth/login',
+  //     logout: '/auth/login',
+  //     home: '/dashboard',
+  //   },
+
+  //   plugins: [
+  //     '~/plugins/axios'
+  //   ]
+  // },
   auth: {
     strategies: {
-      cookie: {
-        endpoints: {
-          csrf: {
-            url: '/sanctum/csrf-cookie'
-          },
+      'laravelSanctum': {
+        provider: 'laravel/sanctum',
+        url: 'http://api.japachronicles.xyz',
+        // url: 'http://localhost',
+        endpoints:{
           login: {
-            url: '/login',
-          },
-          register: {
-            url: '/register',
-          },
-          logout: {
-            url: '/logout',
-          },
-          user: {
-            url: '/user',
+            url: '/api/login',
           }
-        },
-        user: {
-          property: 'data'
-        },
+        }
       }
-    },
-
-    redirect: {
-      login: '/auth/login',
-      logout: '/auth/login',
-      home: '/dashboard',
-    },
-
-    plugins: [
-      '~/plugins/axios'
-    ]
+    }
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     // baseURL: 'http://localhost',
-    baseURL: 'https://api.japachronicles.xyz/',
+    baseURL: 'https://api.japachronicles.xyz',
     credentials: true
   },
 

@@ -126,7 +126,7 @@ export default {
     submitLogin(){
       this.errors = [];
 
-      this.$auth.loginWith('cookie', {
+      this.$auth.loginWith('laravelSanctum', {
         data: {
           email: this.email,
           password: this.password,
