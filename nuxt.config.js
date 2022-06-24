@@ -59,6 +59,43 @@ export default {
   //   }
   // },
 
+  // auth: {
+  //   strategies: {
+  //     cookie: {
+  //       endpoints: {
+  //         csrf: {
+  //           url: '/sanctum/csrf-cookie'
+  //         },
+  //         login: {
+  //           url: '/api/login',
+  //         },
+  //         register: {
+  //           url: '/api/register',
+  //         },
+  //         logout: {
+  //           url: '/api/logout',
+  //         },
+  //         user: {
+  //           url: '/api/user',
+  //         }
+  //       },
+  //       user: {
+  //         property: 'data'
+  //       },
+  //     }
+  //   },
+
+  //   redirect: {
+  //     login: '/auth/login',
+  //     logout: '/auth/login',
+  //     home: '/dashboard',
+  //   },
+
+  //   plugins: [
+  //     '~/plugins/axios'
+  //   ]
+  // },
+
   auth: {
     strategies: {
       cookie: {
@@ -67,16 +104,16 @@ export default {
             url: '/sanctum/csrf-cookie'
           },
           login: {
-            url: '/api/login',
+            url: '/login',
           },
           register: {
-            url: '/api/register',
+            url: '/register',
           },
           logout: {
-            url: '/api/logout',
+            url: '/logout',
           },
           user: {
-            url: '/api/user',
+            url: '/user',
           }
         },
         user: {
