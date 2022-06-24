@@ -67,16 +67,16 @@ export default {
             url: '/sanctum/csrf-cookie'
           },
           login: {
-            url: '/api/login',
+            url: '/login',
           },
           register: {
-            url: '/api/register',
+            url: '/register',
           },
           logout: {
-            url: '/api/logout',
+            url: '/logout',
           },
           user: {
-            url: '/api/user',
+            url: '/user',
           }
         },
         user: {
@@ -180,10 +180,10 @@ export default {
   build: {
   },
 
-  publicRuntimeConfig: {
-    myPublicVariable: process.env.PUBLIC_API_URL,
-    myLink: process.env.MAIN_URL,
-  },
+  // publicRuntimeConfig: {
+  //   myPublicVariable: process.env.PUBLIC_API_URL,
+  //   myLink: process.env.MAIN_URL,
+  // },
 
   // env:{
   //   baseUrl: process.env.BASE_URL || 'http://localhost/'
