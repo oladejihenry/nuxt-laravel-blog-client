@@ -130,7 +130,7 @@ export default {
         data: {
           email: this.email,
           password: this.password,
-          remember: this.remember
+          remember: this.remember,
         }
       })
       .then(() => this.$router.push ('/dashboard'))

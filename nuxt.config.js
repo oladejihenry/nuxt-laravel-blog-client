@@ -137,7 +137,6 @@ export default {
       'laravelSanctum': {
         provider: 'laravel/sanctum',
         url: 'http://api.japachronicles.xyz',
-        // url: 'http://localhost',
         endpoints:{
           login: {
             url: '/api/login',
