@@ -126,11 +126,11 @@ export default {
     submitLogin(){
       this.errors = [];
 
-      this.$auth.loginWith('laravelSanctum', {
+      this.$auth.loginWith('cookie', {
         data: {
           email: this.email,
           password: this.password,
-          remember: this.remember,
+          remember: this.remember
         }
       })
       .then(() => this.$router.push ('/dashboard'))
