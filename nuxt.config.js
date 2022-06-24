@@ -136,14 +136,36 @@ export default {
     strategies: {
       'laravelSanctum': {
         provider: 'laravel/sanctum',
+        // url: 'http://localhost',
         url: 'https://api.japachronicles.xyz',
         endpoints:{
           login: {
             url: '/api/login',
+          },
+          register: {
+            url: '/api/register',
+          },
+          logout: {
+            url: '/api/logout',
+          },
+          user: {
+            url: '/api/user',
+          },
+          user: {
+            property: 'data'
           }
         }
       }
-    }
+    },
+      redirect: {
+        login: '/auth/login',
+        logout: '/auth/login',
+        home: '/dashboard',
+      },
+    
+    plugins: [
+      '~/plugins/axios'
+    ]
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
