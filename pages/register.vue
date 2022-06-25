@@ -23,7 +23,7 @@ export default {
 
   methods:{
     submitRegister(event){
-      this.$axios.$post('api/register', {
+      this.$axios.$post('/register', {
         name: this.name,
         email: this.email,
         username: this.username,
