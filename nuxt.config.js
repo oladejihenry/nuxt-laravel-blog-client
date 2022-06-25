@@ -143,7 +143,7 @@ export default {
             url: '/login',
           },
           register: {
-            url: '/api/register',
+            url: '/register',
           },
           logout: {
             url: '/api/logout',
