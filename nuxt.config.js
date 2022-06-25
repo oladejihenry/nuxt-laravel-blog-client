@@ -140,10 +140,10 @@ export default {
         url: 'https://api.japachronicles.xyz',
         endpoints:{
           login: {
-            url: '/login',
+            url: '/api/login',
           },
           register: {
-            url: '/register',
+            url: '/api/register',
           },
           logout: {
             url: '/api/logout',
