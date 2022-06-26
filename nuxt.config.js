@@ -180,10 +180,10 @@ export default {
   build: {
   },
 
-  // publicRuntimeConfig: {
-  //   myPublicVariable: process.env.PUBLIC_API_URL,
-  //   myLink: process.env.MAIN_URL,
-  // },
+  publicRuntimeConfig: {
+    myPublicVariable: process.env.PUBLIC_API_URL,
+    myLink: process.env.MAIN_URL,
+  },
 
   // env:{
   //   baseUrl: process.env.BASE_URL || 'http://localhost/'
