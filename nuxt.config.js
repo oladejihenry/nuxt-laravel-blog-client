@@ -59,42 +59,42 @@ export default {
   //   }
   // },
 
-  auth: {
-    strategies: {
-      cookie: {
-        endpoints: {
-          csrf: {
-            url: '/sanctum/csrf-cookie'
-          },
-          login: {
-            url: '/api/login',
-          },
-          register: {
-            url: '/api/register',
-          },
-          logout: {
-            url: '/api/logout',
-          },
-          user: {
-            url: '/api/user',
-          }
-        },
-        user: {
-          property: 'data'
-        },
-      }
-    },
+  // auth: {
+  //   strategies: {
+  //     cookie: {
+  //       endpoints: {
+  //         csrf: {
+  //           url: '/sanctum/csrf-cookie'
+  //         },
+  //         login: {
+  //           url: '/api/login',
+  //         },
+  //         register: {
+  //           url: '/api/register',
+  //         },
+  //         logout: {
+  //           url: '/api/logout',
+  //         },
+  //         user: {
+  //           url: '/api/user',
+  //         }
+  //       },
+  //       user: {
+  //         property: 'data'
+  //       },
+  //     }
+  //   },
 
-    redirect: {
-      login: '/auth/login',
-      logout: '/auth/login',
-      home: '/dashboard',
-    },
+  //   redirect: {
+  //     login: '/auth/login',
+  //     logout: '/auth/login',
+  //     home: '/dashboard',
+  //   },
 
-    plugins: [
-      '~/plugins/axios'
-    ]
-  },
+  //   plugins: [
+  //     '~/plugins/axios'
+  //   ]
+  // },
 
   // auth: {
   //   strategies: {
@@ -132,47 +132,47 @@ export default {
   //     '~/plugins/axios'
   //   ]
   // },
-  // auth: {
-  //   strategies: {
-  //     'laravelSanctum': {
-  //       provider: 'laravel/sanctum',
-  //       // url: 'http://localhost',
-  //       url: 'https://api.japachronicles.xyz',
-  //       endpoints:{
-  //         login: {
-  //           url: '/api/login',
-  //         },
-  //         register: {
-  //           url: '/api/register',
-  //         },
-  //         logout: {
-  //           url: '/api/logout',
-  //         },
-  //         user: {
-  //           url: '/api/user',
-  //         },
-  //         user: {
-  //           property: 'data'
-  //         }
-  //       }
-  //     }
-  //   },
-  //     redirect: {
-  //       login: '/auth/login',
-  //       logout: '/auth/login',
-  //       home: '/dashboard',
-  //     },
+  auth: {
+    strategies: {
+      'laravelSanctum': {
+        provider: 'laravel/sanctum',
+        url: 'http://localhost',
+        // url: 'https://api.japachronicles.xyz',
+        endpoints:{
+          login: {
+            url: '/login',
+          },
+          register: {
+            url: '/register',
+          },
+          logout: {
+            url: '/logout',
+          },
+          user: {
+            url: '/api/user',
+          }
+        },
+        user: {
+          property: false
+        }
+      }
+    },
+      redirect: {
+        login: '/auth/login',
+        logout: '/auth/login',
+        home: '/dashboard',
+      },
     
-  //   plugins: [
-  //     '~/plugins/axios'
-  //   ]
-  // },
+    plugins: [
+      '~/plugins/axios'
+    ]
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    // baseURL: 'http://localhost',
-    baseURL: 'https://api.japachronicles.xyz',
+    baseURL: 'http://localhost',
+    // baseURL: 'https://api.japachronicles.xyz',
     credentials: true
   },
 

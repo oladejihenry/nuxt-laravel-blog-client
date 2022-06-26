@@ -123,13 +123,13 @@ export default {
     remember: false
   }),
   methods:{
-    submitLogin(){
+    submitLogin(event){
       this.errors = [];
 
-      this.$auth.loginWith('cookie', {
+      this.$auth.loginWith('laravelSanctum', {
         data: {
           email: this.email,
-          password: this.password,
+          password:this.password,
           remember: this.remember
         }
       })
