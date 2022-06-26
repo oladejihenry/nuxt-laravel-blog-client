@@ -23,7 +23,8 @@ export default {
 
   methods:{
     submitRegister(event){
-      this.$axios.$post('api/register', {
+      this.$axios.$get('sanctum/csrf-cookie')
+      this.$axios.$post('/register', {
         name: this.name,
         email: this.email,
         username: this.username,

@@ -123,22 +123,27 @@ export default {
     remember: false
   }),
   methods:{
-    submitLogin(){
+    async submitLogin(){
       this.errors = [];
-
-      this.$auth.loginWith('cookie', {
+      try{
+      this.$auth.loginWith('laravelSanctum', {
         data: {
           email: this.email,
           password: this.password,
           remember: this.remember
         }
       })
-      .then(() => this.$router.push ('/dashboard'))
-      .catch(error => {
+      }catch(error){
         if(error.response.status !== 422) throw error
 
         this.errors = Object.values(error.response.data.errors).flat()
-      })
+      }
+      // .then(() => this.$router.push ('/dashboard'))
+      // .catch(error => {
+      //   if(error.response.status !== 422) throw error
+
+      //   this.errors = Object.values(error.response.data.errors).flat()
+      // })
     }
   },
   head(){
