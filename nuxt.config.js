@@ -50,7 +50,7 @@ export default {
   //       provider: 'laravel/sanctum',
   //       url: 'http://localhost',
   //       endpoints:{
-  //         login: {
+  //         login: {s
   //           url: '/api/login',
   //         }
   //       }
@@ -153,7 +153,7 @@ export default {
           }
         },
         user: {
-          property: 'data'
+          property: false
         }
       }
     },
@@ -180,10 +180,10 @@ export default {
   build: {
   },
 
-  // publicRuntimeConfig: {
-  //   myPublicVariable: process.env.PUBLIC_API_URL,
-  //   myLink: process.env.MAIN_URL,
-  // },
+  publicRuntimeConfig: {
+    myPublicVariable: process.env.PUBLIC_API_URL,
+    myLink: process.env.MAIN_URL,
+  },
 
   // env:{
   //   baseUrl: process.env.BASE_URL || 'http://localhost/'
