@@ -76,6 +76,9 @@ export default {
       dropDown: false
     }
   },
+  created(){
+	  this.$axios.$get('/sanctum/csrf-cookie').then(response => {});
+  },
   computed: {
     featuredImage(){
       return this.$config.myPublicVariable + 'storage/img/profile/'

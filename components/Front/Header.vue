@@ -63,6 +63,9 @@ export default {
 	data: () => ({
     category:[]
   }),
+  created(){
+	this.$axios.$get('/sanctum/csrf-cookie').then(response => {});
+  }
 	
 }
 </script>
