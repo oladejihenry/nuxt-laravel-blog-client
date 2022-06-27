@@ -31,7 +31,7 @@
                         type="email"
                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         placeholder="Email"
-                        v-model="email"
+                        v-model="form.email"
                       />
                     </div>
                     <div class="relative w-full mb-3">
@@ -43,7 +43,7 @@
                         type="password"
                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         placeholder="Password"
-                        v-model="password"
+                        v-model="form.password"
                       />
                     </div>
                     <div>
@@ -51,7 +51,7 @@
                         ><input
                           id="customCheckLogin"
                           type="checkbox"
-                          v-model="remember"
+                          v-model="form.remember"
                           class="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
                         /><span
                           class="ml-2 text-sm font-semibold text-blueGray-600"
@@ -117,29 +117,38 @@ export default {
   auth: 'guest',
   name: 'Login',
   data:() => ({
-    errors: [],
+    form: {
     email: '',
     password: '',
     remember: false
+    },
+    errors: [],
   }),
   methods:{
-    submitLogin(event){
-      this.errors = [];
-    
-      this.$auth.loginWith('laravelSanctum', {
-        data: {
-          email: this.email,
-          password:this.password,
-          remember: this.remember
+    async submitLogin(){
+      try{
+        await this.$auth.loginWith('laravelSanctum',{data: this.form})
+      }catch (err){
+        if(err.response.status = 422){
+          this.errors = 'Could not sign in'
         }
-      })
+      }
+      // this.errors = [];
     
-      .then(() => {
-        this.$router.push('/');
-      })
-      .catch(error => {
-        this.errors = error.response.data.errors;
-      });
+      // this.$auth.loginWith('laravelSanctum', {
+      //   data: {
+      //     email: this.email,
+      //     password:this.password,
+      //     remember: this.remember
+      //   }
+      // })
+    
+      // .then(() => {
+      //   this.$router.push('/');
+      // })
+      // .catch(error => {
+      //   console.log(error);
+      // });
       // .then(() => this.$router.push ('/dashboard'))
       // .catch(error => {
       //   if(error.response.status !== 422) throw error
