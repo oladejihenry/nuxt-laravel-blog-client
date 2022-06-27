@@ -65,8 +65,9 @@ export default {
 	user: ''
   }),
   created(){
-	this.$axios.$get('/sanctum/csrf-cookie').then(response => {});
-	this.getUser();
+	this.$axios.$get('/sanctum/csrf-cookie').then(response => {
+		this.getUser();
+	});
   },
   methods: {
 	getUser(){
