@@ -125,7 +125,7 @@ export default {
   methods:{
     submitLogin(event){
       this.errors = [];
-      try{
+    
       this.$auth.loginWith('laravelSanctum', {
         data: {
           email: this.email,
@@ -133,11 +133,13 @@ export default {
           remember: this.remember
         }
       })
-      }catch(error){
-        if(error.response.status !== 422) throw error
-
-        this.errors = Object.values(error.response.data.errors).flat()
-      }
+    
+      .then(() => {
+        this.$router.push('/');
+      })
+      .catch(error => {
+        this.errors = error.response.data.errors;
+      });
       // .then(() => this.$router.push ('/dashboard'))
       // .catch(error => {
       //   if(error.response.status !== 422) throw error
