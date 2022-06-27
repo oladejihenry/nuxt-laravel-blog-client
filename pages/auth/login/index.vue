@@ -122,7 +122,7 @@ export default {
     password: '',
     remember: false
     },
-    errors: [],
+    errors: '',
   }),
   methods:{
     async submitLogin(){
