@@ -162,10 +162,6 @@ export default {
         logout: '/auth/login',
         home: '/dashboard',
       },
-    
-    plugins: [
-      '~/plugins/axios'
-    ]
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
