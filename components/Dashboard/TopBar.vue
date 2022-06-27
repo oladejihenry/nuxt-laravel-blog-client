@@ -73,11 +73,13 @@ export default {
   name: 'TopBar',
   data(){
     return {
-      dropDown: false
+      dropDown: false,
+      user: ''
     }
   },
   created(){
 	  this.$axios.$get('/sanctum/csrf-cookie').then(response => {});
+    this.getUser();
   },
   computed: {
     featuredImage(){
@@ -91,6 +93,13 @@ export default {
     showDropdown(){
       this.dropDown = !this.dropDown
     }
+  },
+  methods: {
+	getUser(){
+		this.$axios.$get('/api/user').then(response => {
+			this.user = response.data;
+		})
+	}
   }
 }
 </script>
