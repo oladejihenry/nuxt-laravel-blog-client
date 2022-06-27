@@ -46,7 +46,7 @@
                         v-model="form.password"
                       />
                     </div>
-                    <div>
+                    <!-- <div>
                       <label class="inline-flex items-center cursor-pointer"
                         ><input
                           id="customCheckLogin"
@@ -58,7 +58,7 @@
                           >Remember me</span
                         ></label
                       >
-                    </div>
+                    </div> -->
                     <div class="text-center mt-6">
                       <button
                         class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
@@ -120,7 +120,6 @@ export default {
     form: {
     email: '',
     password: '',
-    remember: false
     },
     errors: '',
   }),
