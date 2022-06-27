@@ -94,10 +94,8 @@ export default {
     },
     showDropdown(){
       this.dropDown = !this.dropDown
-    }
-  },
-  methods: {
-	getUser(){
+    },
+    getUser(){
 		this.$axios.$get('/api/user').then(response => {
 			this.user = response.data;
 		})
