@@ -96,10 +96,10 @@ export default {
       this.dropDown = !this.dropDown
     },
     getUser(){
-		this.$axios.$get('/api/user').then(response => {
-			this.user = response.data;
-		})
-	}
+      this.$axios.$get('/api/user').then(response => {
+        this.user = response.data;
+      })
+	  }
   }
 }
 </script>
