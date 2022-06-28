@@ -30,7 +30,7 @@
               </div>
               <!-- featured image -->
               <div class="featured-image">
-                <img :src='featuredImage+ post.main_image' :alt="post.title" />
+                <img :src='featuredImage+ post.main_image[0]' :alt="post.title" />
               </div>
               <!-- post content -->
               <div class="post-content clearfix" v-html="post.body">
@@ -219,7 +219,7 @@ export default {
   },
   computed: {
     featuredImage(){
-      return this.$config.myPublicVariable + 'storage/'
+      return this.$config.myPublicVariable + 'storage/img/profile/'
     }
   }
 }
