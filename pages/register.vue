@@ -32,7 +32,7 @@ export default {
         password_confirmation: this.password_confirmation
       
       }).then(response => {
-        this.$router.push('/auth/login')
+        this.$router.push('/dashboard')
       }).catch(error => {
         console.log(error)
       })
