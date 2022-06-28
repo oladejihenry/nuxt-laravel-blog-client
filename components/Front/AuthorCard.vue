@@ -24,7 +24,7 @@ export default {
   // props: { author: Array },
   computed: {
     featuredImage(){
-      return this.$config.myPublicVariable + 'storage/'
+      return this.$config.myPublicVariable + 'storage/img/profile/'
     }
   }
 }
