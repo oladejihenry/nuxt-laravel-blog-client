@@ -64,18 +64,6 @@ export default {
     category:[],
 	user: ''
   }),
-//   created(){
-// 	this.$axios.$get('/sanctum/csrf-cookie').then(response => {
-// 		this.getUser();
-// 	});
-//   },
-//   methods: {
-// 	getUser(){
-// 		this.$axios.$get('/api/user').then(response => {
-// 			this.user = response.data;
-// 		})
-// 	}
-//   }
 	
 }
 </script>

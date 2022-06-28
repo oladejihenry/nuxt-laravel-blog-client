@@ -157,8 +157,9 @@ export default {
       title: 'Blog'
     }
   },
-  computed: {
+  method: {
 	featuredImage(){
+		if(!this.frontpage.featured_image) return "https://api.japachronicles.xyz/storage/normani-fair-listen-here-lyrics.jpg";
 	  return this.$config.myPublicVariable + 'storage/'
 	}
   }

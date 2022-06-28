@@ -77,12 +77,12 @@ export default {
       user: ''
     }
   },
-  created(){
-	  this.$axios.$get('/sanctum/csrf-cookie').then(response => {
-      this.getUser();
-    });
+  // created(){
+	//   this.$axios.$get('/sanctum/csrf-cookie').then(response => {
+  //     this.getUser();
+  //   });
     
-  },
+  // },
   computed: {
     featuredImage(){
       return this.$config.myPublicVariable + 'storage/img/profile/'
@@ -95,11 +95,11 @@ export default {
     showDropdown(){
       this.dropDown = !this.dropDown
     },
-    getUser(){
-      this.$axios.$get('/api/user').then(response => {
-        this.user = response.data;
-      })
-	  }
+    // getUser(){
+    //   this.$axios.$get('/api/user').then(response => {
+    //     this.user = response.data;
+    //   })
+	  // }
   }
 }
 </script>
