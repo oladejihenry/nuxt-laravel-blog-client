@@ -30,7 +30,7 @@
               </div>
               <!-- featured image -->
               <div class="featured-image">
-                <img :src='featuredImage+ post.main_image[0]' :alt="post.title" />
+                <img :src='featuredImage+ post.main_image' :alt="post.title" />
               </div>
               <!-- post content -->
               <div class="post-content clearfix" v-html="post.body">
