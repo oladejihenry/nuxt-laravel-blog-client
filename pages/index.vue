@@ -157,7 +157,7 @@ export default {
       title: 'Blog'
     }
   },
-  method: {
+  computed: {
 	featuredImage(){
 	
 	  return this.$config.myPublicVariable + 'storage/'
