@@ -129,7 +129,7 @@ export default {
         await this.$auth.loginWith('laravelSanctum',{data: this.form})
       }catch (errors){
         if(errors.response.status = 422){
-          this.errors = 'Could not sign in'
+          this.errors = errors.response.data.errors
         }
       }
       // this.errors = [];
