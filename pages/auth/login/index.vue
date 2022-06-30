@@ -128,8 +128,8 @@ export default {
       this.errors = []
       try{
         await this.$auth.loginWith('laravelSanctum',{data: this.form})
-      }catch (err){
-        if(err){
+      }catch (error){
+        if(error){
           if (error.response.status !== 422) throw error
           this.errors = Object.values(error.response.data.errors).flat();
         }
