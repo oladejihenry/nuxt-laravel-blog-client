@@ -136,8 +136,8 @@ export default {
     strategies: {
       'laravelSanctum': {
         provider: 'laravel/sanctum',
-        url: process.env.PUBLIC_API_URL,
-        // url: 'https://api.japachronicles.xyz',
+        // url: process.env.PUBLIC_API_URL,
+        url: 'https://api.japachronicles.xyz',
         endpoints:{
           login: {
             url: '/login',
@@ -167,8 +167,8 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: process.env.PUBLIC_API_URL,
-    // baseURL: 'https://api.japachronicles.xyz',
+    // baseURL: process.env.PUBLIC_API_URL,
+    baseURL: 'https://api.japachronicles.xyz',
     credentials: true
   },
 

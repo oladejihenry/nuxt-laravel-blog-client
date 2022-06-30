@@ -125,13 +125,11 @@ export default {
   }),
   methods:{
     async submitLogin(){
-      this.errors = []
       try{
         await this.$auth.loginWith('laravelSanctum',{data: this.form})
-      }catch (error){
-        if(error){
-          if (error.response.status !== 422) throw error
-          this.errors = Object.values(error.response.data.errors).flat();
+      }catch (errors){
+        if(errors.response.status = 422){
+          this.errors = 'Could not sign in'
         }
       }
       // this.errors = [];
