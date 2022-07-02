@@ -19,8 +19,8 @@
                   </div>
                 </div>
                 <PostError :errors="errors"></PostError>
-                <SlugError :slugerrors="slugerrors"></SlugError>
-                <div v-if="slugerrors" class="flex-auto px-4 lg:px-10 py-10 pt-0">
+                <!-- <SlugError :slugerrors="slugerrors"></SlugError>
+                <div v-if="slugerrors" class="flex-auto px-4 lg:px-10 py-10 pt-0"> -->
                   <form @submit.prevent="updatePost">
                     <h6
                       class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase"
@@ -137,8 +137,8 @@
                       </div>
                     </div>
                   </form>
-                </div>
-                <div v-else></div>
+                <!-- </div>
+                <div v-else></div> -->
               </div>
             </div>
           </div>
@@ -169,7 +169,7 @@ export default {
   },
   data:() =>({
     errors: [],
-    slugerrors: [],
+    // slugerrors: [],
     title: '',
     body: '',
     excerpt: '',
@@ -190,7 +190,7 @@ export default {
       if(error.response.status == 403){
         this.$router.push('/posts') 
       }
-      this.slugerrors = error.response.data.message
+      // this.slugerrors = error.response.data.message
       // console.log(this.slugerrors)
     })
   },
@@ -211,7 +211,7 @@ export default {
         }
 
         this.errors = Object.values(error.response.data.errors).flat()
-        this.slugerrors = error.response.data.message
+        // this.slugerrors = error.response.data.message
       })
 
     },

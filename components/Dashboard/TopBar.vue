@@ -7,7 +7,7 @@
           >
             <h3
               class="text-white text-sm uppercase hidden lg:inline-block font-semibold"
-              >Welcome, {{ $auth.user.username  }}</h3
+              >Welcome, {{ user.username  }}</h3
             >
             <form
               class="md:flex hidden flex-row flex-wrap items-center lg:ml-auto mr-3"
@@ -38,7 +38,7 @@
                     ><img
                       alt="..."
                       class="w-full rounded-full align-middle border-none shadow-lg"
-                      :src='featuredImage+ $auth.user.profile_image'
+                      :src='featuredImage+ user.profile_image'
                   /></span>
                 </div>
               </NuxtLink>
@@ -74,32 +74,35 @@ export default {
   data(){
     return {
       dropDown: false,
-      user: ''
+      user: '',
     }
   },
-  // created(){
-	//   this.$axios.$get('/sanctum/csrf-cookie').then(response => {
-  //     this.getUser();
-  //   });
+  created(){
+	  this.$axios.$get('/sanctum/csrf-cookie').then(response => {
+      this.getUser();
+    });
     
-  // },
+  },
   computed: {
     featuredImage(){
       return this.$config.myPublicVariable + 'storage/img/profile/'
     }
   },
   methods: {
+    //  featuredImage(){
+    //   return this.$config.myPublicVariable + 'storage/img/profile/'
+    // },
     logout(){
       this.$auth.logout()
     },
     showDropdown(){
       this.dropDown = !this.dropDown
     },
-    // getUser(){
-    //   this.$axios.$get('/api/user').then(response => {
-    //     this.user = response.data;
-    //   })
-	  // }
+    getUser(){
+      this.$axios.$get('/api/user').then(response => {
+        this.user = response.data;
+      })
+	  }
   }
 }
 </script>

@@ -34,4 +34,7 @@ export default {
 .author{
   border-radius: 9999px;
 }
+.about-author .thumb{
+  margin-top:-15px !important;
+}
 </style>
