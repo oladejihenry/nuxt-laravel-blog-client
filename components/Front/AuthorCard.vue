@@ -1,7 +1,7 @@
 <template>
   <div class="about-author padding-30 rounded">
     <div class="thumb author">
-      <img :src='featuredImage+ author.profile_image' :alt="author.username" />
+      <img v-if="author" :src="profileImage" :alt="author.username" />
     </div>
     <div class="details">
       <h4 class="name text-capitalize"><a href="#">{{ author.username }}</a></h4>
@@ -21,11 +21,18 @@
 <script>
 export default {
   props: ['author'],
-  // props: { author: Array },
   computed: {
-    featuredImage(){
-      return this.$config.myPublicVariable + 'storage/img/profile/'
+    // profileImage(){
+    //   return this.$config.myPublicVariable + 'storage/img/profile/' + this.author.profile_image
+    // },
+    profileImage(){
+      if(this.author.profile_image){
+        return this.$config.myPublicVariable + 'storage/img/profile/' + this.author.profile_image
+      }else{
+        // return 'https://via.placeholder.com/1280x720'
+      }
     }
+
   }
 }
 </script>

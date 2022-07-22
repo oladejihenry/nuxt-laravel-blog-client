@@ -129,7 +129,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 @import '~/assets/front/css/bootstrap.min.css';
 @import '~/assets/front/css/all.min.css';
 @import '~/assets/front/css/slick.css';
