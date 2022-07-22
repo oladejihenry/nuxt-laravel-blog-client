@@ -75,3 +75,31 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+@import '~/assets/front/css/bootstrap.min.css';
+@import '~/assets/front/css/all.min.css';
+@import '~/assets/front/css/slick.css';
+@import '~/assets/front/css/simple-line-icons.css';
+@import '~/assets/front/css/style.css';
+
+.spacer {
+  height: 50px;
+}
+
+.section-header {
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  border: solid 1px #ebebeb;
+}
+
+.section-title {
+  text-align: center;
+}
+
+.author {
+  border-radius: 9999px;
+}
+</style>
